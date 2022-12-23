@@ -7,7 +7,7 @@ function App() {
 
   const [toSend, setToSend] = useState({
     from_name: '',
-    Info: '',
+    info: '',
     message: '',
     date: '',
   });
