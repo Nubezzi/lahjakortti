@@ -7,46 +7,10 @@ function App() {
 
   const [toSend, setToSend] = useState({
     from_name: '',
-    to_name: '',
+    Info: '',
     message: '',
-    reply_to: '',
+    date: '',
   });
-
-  function Mailform() {
-    return(
-      <form onSubmit={onSubmit}>
-          <input
-            type='text'
-            name='from_name'
-            placeholder='Varaaja'
-            value={toSend.from_name}
-            onChange={handleChange}
-          />
-          <input
-            type='text'
-            name='date'
-            placeholder='Päivämäärä'
-            value={toSend.to_name}
-            onChange={handleChange}
-          />
-          <input
-            type='text'
-            name='message'
-            placeholder='Päivän toiveohjelma'
-            value={toSend.message}
-            onChange={handleChange}
-          />
-          <input
-            type='text'
-            name='info'
-            placeholder='Muuta tietoa?'
-            value={toSend.reply_to}
-            onChange={handleChange}
-          />
-          <button type='submit'>Varaa aika!</button>
-        </form>
-    )
-  }
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +41,7 @@ function App() {
         <div className='h1h1'>
           <h1>Hyvää joulua</h1>
           <h2>Tässä voit lunastaa lahjakortin halutulla toiveohjelmalla, valitsemallesi päivälle.</h2>
-          <h3>Eli siis lahjakortti ei ole mitään 750€, vaan tietenkin laatuperheaikaa! :)</h3>
+          <h3>Eli siis lahjakortti ei ole mikään 750€, vaan tietenkin laatuperheaikaa! :)</h3>
         </div>
         <div className="main-block">
           <div className="left-part">
@@ -85,15 +49,15 @@ function App() {
           <form action="/">
             <h1>Varaa "Elämys"-lahja!</h1>
             <div className="info">
-              <input type='text' name='from_name'placeholder='Varaaja' value={toSend.from_name} onChange={handleChange}/>
-              <input type='date'name='date' min="2023-01-15" value={toSend.to_name} onChange={handleChange}/>
-              <input type='text' name='info' placeholder='Muuta tietoa?' value={toSend.reply_to} onChange={handleChange}/>
+              <input type='text' name='from_name' placeholder='Varaaja' value={toSend.from_name} onChange={handleChange}/>
+              <input type='date'name='date' min="2023-01-15" value={toSend.date} onChange={handleChange}/>
+              <input type='text' name='info' placeholder='Muuta tietoa?' value={toSend.info} onChange={handleChange}/>
             </div>
             <p>Päivän toiveohjelma</p>
             <div>
               <textarea type='text' name='message' value={toSend.message} onChange={handleChange} rows="4"></textarea>
             </div>
-            <button type="submit" href="/">Varaa!</button>
+            <button type="submit">Varaa!</button>
           </form>
         </div>
       </body>
