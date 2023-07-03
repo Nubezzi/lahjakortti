@@ -1,7 +1,6 @@
 import './App.css';
-import { useState } from 'react';
-import { send } from 'emailjs-com';
-import kuva from './imgs/Untitled.png';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 function App() {
 
@@ -12,10 +11,11 @@ function App() {
     date: '',
   });
 
+  const form = useRef()
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(toSend)
-    send('service_lahjakortti', 'template_couuawj', toSend, 'KXUUTcmjiSRG6n4HB')
+    emailjs.sendForm('service_lahjakortti', 'template_couuawj', form.current, process.env.REACT_APP_EMAILJS_KEY)
     .then(function(response) {
        console.log('SUCCESS!', response.status, response.text);
     }, function(error) {
@@ -41,7 +41,7 @@ function App() {
         <div className="main-block">
           <div className="left-part">
           </div>
-          <form onSubmit={onSubmit}>
+          <form ref={form} onSubmit={onSubmit}>
             <h1>Varaa "Elämys"-lahja!</h1>
             <div className="info">
               <input type='text' name='from_name' placeholder='Varaaja' value={toSend.from_name} onChange={handleChange}/>
